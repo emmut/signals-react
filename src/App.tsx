@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { computed, effect, useSignal } from "@preact/signals-react";
+import { useComputed, useSignal, useSignalEffect } from "@preact/signals-react";
 
 function App() {
   // react state
@@ -10,8 +10,8 @@ function App() {
 
   // signal state
   const signalCount = useSignal(0);
-  const doubleSignalCount = computed(() => signalCount.value * 2);
-  effect(() => console.log("sCount", signalCount.value));
+  const doubleSignalCount = useComputed(() => signalCount.value * 2);
+  useSignalEffect(() => console.log("sCount", signalCount.value));
 
   const randomColor = () =>
     `#${Math.random().toString(16).slice(2, 8).padEnd(6, "0")}`;
