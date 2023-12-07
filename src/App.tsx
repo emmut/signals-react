@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
  *
  * @see https://www.npmjs.com/package/@preact/signals-react
  */
-import { useComputed, useSignal, useSignalEffect } from "@preact/signals-react";
+import { useSignalEffect } from "@preact/signals-react";
 
 import "./App.css";
 import ColorDiv from "./ColorDiv";
+import { doubleSignalCount, signalCount } from "./signals";
 
 function App() {
   // react state
@@ -17,11 +18,6 @@ function App() {
   const doubledCount = count * 2;
   useEffect(() => console.log("count", count), [count]);
 
-  // signal state
-  const signalCount = useSignal(0);
-
-  // NOTE: signalCount.value
-  const doubleSignalCount = useComputed(() => signalCount.value * 2);
   useSignalEffect(() => console.log("sCount", signalCount.value));
 
   return (
