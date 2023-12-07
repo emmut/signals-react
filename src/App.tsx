@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { useComputed, useSignal, useSignalEffect } from "@preact/signals-react";
+import ColorDiv from "./ColorDiv";
 
 function App() {
   // react state
@@ -12,9 +13,6 @@ function App() {
   const signalCount = useSignal(0);
   const doubleSignalCount = useComputed(() => signalCount.value * 2);
   useSignalEffect(() => console.log("sCount", signalCount.value));
-
-  const randomColor = () =>
-    `#${Math.random().toString(16).slice(2, 8).padEnd(6, "0")}`;
 
   return (
     <>
@@ -33,14 +31,7 @@ function App() {
         <p>Doubled signalCount is {doubleSignalCount}</p>
       </div>
 
-      <div
-        style={{
-          backgroundColor: randomColor(),
-          color: randomColor(),
-        }}
-      >
-        Did I change color?
-      </div>
+      <ColorDiv />
     </>
   );
 }
