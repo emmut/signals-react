@@ -34,6 +34,14 @@ function App() {
         <p>Doubled count is {doubledCount}</p>
       </div>
 
+      <div className="card">
+        <button onClick={() => signalCount.value++}>
+          {/* NOTE: difference between signalCount and signalCount.value */}
+          count is {signalCount}
+        </button>
+        <p>Doubled signalCount is {doubleSignalCount}</p>
+      </div>
+
       <ColorDiv />
     </>
   );
